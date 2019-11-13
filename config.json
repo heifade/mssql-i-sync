@@ -1,0 +1,20 @@
+{
+  "sourceDataBase": {
+    "server": "115.159.126.123",
+    "port": 1433,
+    "user": "mapRegion",
+    "password": "abc,234",
+    "database": "mapRegion",
+    "tables": ["boundary"],
+    "connectionTimeout": 6000000
+  },
+  "targetDataBase": {
+    "server": "115.159.126.123",
+    "port": 1433,
+    "user": "mapRegion",
+    "password": "abc,234",
+    "database": "mapRegion2",
+    "tables": ["boundary"],
+    "connectionTimeout": 6000000
+  }
+}
