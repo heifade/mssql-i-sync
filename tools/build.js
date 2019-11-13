@@ -1,4 +1,4 @@
-const { readFileSync, writeFileSync } = require("fs");
+const { readFileSync, existsSync, copyFileSync, writeFileSync } = require("fs");
 const { resolve } = require("path");
 
 function changeServerFile(serverFileName) {
