@@ -12,14 +12,14 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   copyCount += list.length;
 
   await TableDAL.replaceTable(targetTable, list);
-  console.log(`${getTime()} 表${sourceTable} 同步了${list.length}行`);
+  console.log(`${getTime()} 表${sourceTable} 同步了${copyCount}行，完成${(copyCount / count).toFixed(0)}%`);
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
     const res = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
-    console.log(`${getTime()} 表${sourceTable} 同步了${list.length}行`);
+    console.log(`${getTime()} 表${sourceTable} 同步了${copyCount}行，完成${(copyCount / count).toFixed(0)}%`);
     count = res.count;
     pageSize = res.pageSize;
   }
