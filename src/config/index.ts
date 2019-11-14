@@ -2,7 +2,7 @@ import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import * as chalk from "chalk";
 import { des } from "../utils/des";
-import { KEY } from "../generateKey";
+import { KEY } from "../constant";
 
 let configCacle: Config = null;
 
