@@ -1,13 +1,14 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/index.js",
   "bin": {
     "mssql-i-sync": "./bin/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "build": "webpack --config webpack.config.ts && node ./tools/build.js"
