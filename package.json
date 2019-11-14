@@ -1,6 +1,6 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -10,7 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "webpack --config webpack.config.ts && node ./tools/build.js"
+    "build": "webpack --config webpack.config.ts && node ./tools/build.js",
+    "pub": "gitp -v && yarn build && npm publish"
   },
   "keywords": [],
   "author": "",
