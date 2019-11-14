@@ -1,4 +1,5 @@
 {
+  "pageSize": 10,
   "sourceDataBase": {
     "server": "115.159.126.123",
     "port": 1433,
@@ -6,6 +7,7 @@
     "password": "abc,234",
     "database": "mapRegion",
     "tables": ["boundary"],
+    "primaryKeys": ["id"],
     "connectionTimeout": 6000000
   },
   "targetDataBase": {

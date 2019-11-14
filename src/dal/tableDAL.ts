@@ -2,14 +2,24 @@ import { ConnectionHelper, Select, Replace } from "mssql-i";
 import { getConfig } from "../config";
 
 export class TableDAL {
-  public static async getTableData(tableName: string) {
+  public static async getTableData(tableName: string, primaryKey: string, pageIndex: number) {
     let conn;
     try {
-      conn = await ConnectionHelper.create(getConfig().sourceDataBase);
+      const { sourceDataBase, pageSize } = getConfig();
+      conn = await ConnectionHelper.create(sourceDataBase);
 
-      return await Select.select(conn, {
-        sql: `select * from ${tableName} with(nolock)`
+      const sql = `select *, row_number() over(order by ${primaryKey}) as row_number from ${tableName}`;
+
+      const spRes = await Select.selectSplitPage(conn, {
+        sql,
+        pageSize,
+        index: pageIndex
       });
+
+      return {
+        ...spRes,
+        pageSize
+      };
     } catch (e) {
       throw e;
     } finally {
