@@ -1,10 +1,10 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "mssql-i-sync": "./dist/index.js"
+    "mssql-i-sync": "./bin/index.js"
   },
   "files": [
     "dist"

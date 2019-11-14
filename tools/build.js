@@ -1,11 +1,11 @@
 const { readFileSync, existsSync, copyFileSync, writeFileSync } = require("fs");
 const { resolve } = require("path");
 
-function changeServerFile(serverFileName) {
-  const content = readFileSync(serverFileName, { encoding: "utf8" });
-  writeFileSync(serverFileName, `#!/usr/bin/env node\n${content}`);
-}
-changeServerFile(resolve(__dirname, "../dist/index.js"));
+// function changeServerFile(serverFileName) {
+//   const content = readFileSync(serverFileName, { encoding: "utf8" });
+//   writeFileSync(serverFileName, `#!/usr/bin/env node\n${content}`);
+// }
+// changeServerFile(resolve(__dirname, "../dist/index.js"));
 
 
 
