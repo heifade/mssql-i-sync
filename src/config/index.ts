@@ -1,5 +1,6 @@
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
+import * as chalk from "chalk";
 
 let configCacle: Config = null;
 
@@ -28,7 +29,14 @@ interface Config {
 
 export function getConfig(): Config {
   if (!configCacle) {
-    const configFile = resolve(__dirname, "./config.json");
+    const configFile = resolve(process.cwd(), "./config.json");
+
+    if (!existsSync(configFile)) {
+      const errorText = chalk.red(`配置文件${configFile}不存在！`);
+      console.log(errorText);
+      throw new Error(errorText);
+    }
+
     configCacle = JSON.parse(readFileSync(configFile, { encoding: "utf-8" }));
   }
 

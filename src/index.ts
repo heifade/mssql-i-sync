@@ -1,6 +1,6 @@
 import { TableDAL } from "./dal/tableDAL";
-
 import { getConfig } from "./config";
+import * as chalk from "chalk";
 
 const { sourceDataBase, targetDataBase } = getConfig();
 
@@ -23,7 +23,7 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
     pageSize = res.pageSize;
   }
 
-  console.log(`处理完成，共复制了:${copyCount}行`);
+  console.log(chalk.green(`处理完成，共复制了:${copyCount}行`));
 }
 
 async function syncTables() {
