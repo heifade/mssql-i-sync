@@ -11,19 +11,19 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   copyCount += list.length;
 
   await TableDAL.replaceTable(targetTable, list);
-  console.log(`复制了:${list.length}行`);
+  console.log(`复制了：${list.length}行`);
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
     const res = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
-    console.log(`复制了:${list.length}行`);
+    console.log(`复制了：${list.length}行`);
     count = res.count;
     pageSize = res.pageSize;
   }
 
-  console.log(chalk.green(`处理完成，共复制了:${copyCount}行`));
+  console.log(chalk.green(`处理完成，共复制了：${copyCount}行`));
 }
 
 async function syncTables() {
