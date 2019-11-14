@@ -12,14 +12,14 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   copyCount += list.length;
 
   await TableDAL.replaceTable(targetTable, list);
-  console.log(`${getTime()} 表${sourceTable} 同步了${copyCount}行，完成${((100 * copyCount) / count).toFixed(0)}%`);
+  console.log(`${getTime()} 表${sourceTable} 已完成:${copyCount}条 总共:${count}条 进度:${((100 * copyCount) / count).toFixed(1)}%`);
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
     const res = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
-    console.log(`${getTime()} 表${sourceTable} 同步了${copyCount}行，完成${((100 * copyCount) / count).toFixed(0)}%`);
+    console.log(`${getTime()} 表${sourceTable} 已完成:${copyCount}条 总共:${count}条 进度:${((100 * copyCount) / count).toFixed(1)}%`);
     count = res.count;
     pageSize = res.pageSize;
   }
@@ -32,7 +32,7 @@ async function syncTables() {
     const sourceTable = sourceDataBase.tables[i];
     const primaryKey = sourceDataBase.primaryKeys[i];
     const targetTable = targetDataBase.tables[i];
-    console.log(`${getTime()} 正在同步表${sourceTable} => ${targetTable}`);
+    console.log(`${getTime()} 正在同步表${sourceTable}`);
     await syncTable(sourceTable, primaryKey, targetTable);
   }
   console.log(`${getTime()} 同步完成`);
