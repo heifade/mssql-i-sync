@@ -4,7 +4,8 @@ import { resolve } from "path";
 export default () => {
   const config: Configuration = {
     entry: {
-      index: "./src/index.ts"
+      index: "./src/index.ts",
+      generateKey: "./src/generateKey.ts"
     },
     output: {
       path: resolve(__dirname, "./dist")

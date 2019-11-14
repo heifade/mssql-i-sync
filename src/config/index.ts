@@ -1,6 +1,8 @@
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import * as chalk from "chalk";
+import { des } from "../utils/des";
+import { KEY } from "../generateKey";
 
 let configCacle: Config = null;
 
@@ -40,6 +42,9 @@ export function getConfig(): Config {
     }
 
     configCacle = JSON.parse(readFileSync(configFile, { encoding: "utf-8" }));
+
+    configCacle.sourceDataBase.password = des.decryptStr(configCacle.sourceDataBase.password, KEY);
+    configCacle.targetDataBase.password = des.decryptStr(configCacle.targetDataBase.password, KEY);
   }
 
   return configCacle;

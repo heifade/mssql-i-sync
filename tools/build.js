@@ -6,6 +6,7 @@ function changeServerFile(serverFileName) {
   writeFileSync(serverFileName, `#!/usr/bin/env node\n${content}`);
 }
 changeServerFile(resolve(__dirname, "../dist/index.js"));
+changeServerFile(resolve(__dirname, "../dist/generateKey.js"));
 
 copyFileIfNotExists(resolve(__dirname, "../config.json"), resolve(__dirname, "../dist/config.json"));
 
