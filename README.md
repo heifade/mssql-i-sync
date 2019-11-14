@@ -1,3 +1,10 @@
+# 异地数据库同步
+
+### 安装
+```
+  npm install mssql-i-sync
+```
+
 ### config.json
 ```json
 {
