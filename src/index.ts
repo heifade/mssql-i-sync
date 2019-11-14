@@ -1,6 +1,7 @@
 import { TableDAL } from "./dal/tableDAL";
 import { getConfig } from "./config";
 import * as chalk from "chalk";
+import { getTime } from "./utils/getTime";
 
 const { sourceDataBase, targetDataBase } = getConfig();
 
@@ -11,19 +12,19 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   copyCount += list.length;
 
   await TableDAL.replaceTable(targetTable, list);
-  console.log(`复制了：${list.length}行`);
+  console.log(`${getTime()} 表${sourceTable} 同步了${list.length}行`);
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
     const res = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
-    console.log(`复制了：${list.length}行`);
+    console.log(`${getTime()} 表${sourceTable} 同步了${list.length}行`);
     count = res.count;
     pageSize = res.pageSize;
   }
 
-  console.log(chalk.green(`处理完成，共复制了：${copyCount}行`));
+  console.log(chalk.green(`${getTime()} 表${sourceTable} 同步完成，共${copyCount}行`));
 }
 
 async function syncTables() {
@@ -31,10 +32,13 @@ async function syncTables() {
     const sourceTable = sourceDataBase.tables[i];
     const primaryKey = sourceDataBase.primaryKeys[i];
     const targetTable = targetDataBase.tables[i];
+    console.log(`${getTime()} 正在同步表${sourceTable} => ${targetTable}`);
     await syncTable(sourceTable, primaryKey, targetTable);
   }
+  console.log(`${getTime()} 同步完成`);
 }
 
+console.log(`${getTime()} 开始同步`);
 syncTables()
   .then()
   .catch();
