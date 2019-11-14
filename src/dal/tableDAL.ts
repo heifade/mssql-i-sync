@@ -8,15 +8,13 @@ export class TableDAL {
       const { sourceDataBase, pageSize } = getConfig();
       conn = await ConnectionHelper.create(sourceDataBase);
 
-      const sql = `select *, row_number() over(order by ${primaryKey}) as row_number from ${tableName}`;
-      console.log('select', sql);
+      const sql = `select *, row_number() over(order by ${primaryKey}) as row_number from ${tableName} with(nolock)`;
 
       const spRes = await Select.selectSplitPage(conn, {
         sql,
         pageSize,
         index: pageIndex
       });
-      console.log('select finish', spRes.count);
 
       return {
         ...spRes,
@@ -36,12 +34,10 @@ export class TableDAL {
       conn = await ConnectionHelper.create(targetDataBase);
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
-        console.log('replace', item.id);
         await Replace.replace(conn, {
           data: item,
           table: tableName
         });
-        console.log('replace finish', item.id);
       }
     } catch (e) {
       throw e;
