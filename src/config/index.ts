@@ -15,6 +15,7 @@ interface Config {
     tables: string[];
     primaryKeys: string[];
     connectionTimeout: number;
+    requestTimeout: number;
   };
   targetDataBase: {
     server: string;
@@ -24,6 +25,7 @@ interface Config {
     database: string;
     tables: string[];
     connectionTimeout: number;
+    requestTimeout: number;
   };
 }
 
