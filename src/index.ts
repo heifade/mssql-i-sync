@@ -11,12 +11,11 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   let { pageSize, count, list } = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
   copyCount += list.length;
 
-  const progress = new ProgressBar(`正在同步表 ${sourceTable}`, 100);
+  const progress = new ProgressBar(`正在同步表 ${sourceTable}`, 30);
   progress.setTotal(count);
 
   await TableDAL.replaceTable(targetTable, list);
   progress.setValue(copyCount);
-  progress.render();
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
@@ -24,11 +23,9 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
     progress.setValue(copyCount);
-    progress.render();
     count = res.count;
     pageSize = res.pageSize;
   }
-  // progress.finish();
 }
 
 async function syncTables() {
