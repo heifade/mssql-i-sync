@@ -1,6 +1,6 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -21,7 +21,7 @@
     "@types/webpack": "^4.39.8",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
-    "mssql-i": "^2.0.53",
+    "mssql-i": "^2.0.55",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2",
