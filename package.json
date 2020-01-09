@@ -1,6 +1,6 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "webpack --config webpack.config.ts && node ./tools/build.js",
-    "key": "node ./dist/generateKey.js"
+    "key": "node ./dist/generateKey.js",
+    "start": "ts-node ./src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,7 @@
     "@types/webpack": "^4.39.8",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
-    "mssql-i": "^2.0.56",
+    "mssql-i": "^2.0.57",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2",

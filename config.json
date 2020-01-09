@@ -4,7 +4,7 @@
     "server": "115.159.126.123",
     "port": 1433,
     "user": "mapRegion",
-    "password": "abc,234",
+    "password": "yNsSgNxoXvI=",
     "database": "mapRegion",
     "tables": ["boundary"],
     "primaryKeys": ["id"],
@@ -14,7 +14,7 @@
     "server": "115.159.126.123",
     "port": 1433,
     "user": "mapRegion",
-    "password": "abc,234",
+    "password": "yNsSgNxoXvI=",
     "database": "mapRegion2",
     "tables": ["boundary"],
     "connectionTimeout": 6000000
