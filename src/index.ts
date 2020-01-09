@@ -1,7 +1,7 @@
 import { TableDAL } from "./dal/tableDAL";
 import { getConfig } from "./config";
 import { getTime } from "./utils/getTime";
-import { create } from "progressbar";
+import { ProgressBar } from "progress-i";
 
 const { sourceDataBase, targetDataBase } = getConfig();
 
@@ -11,23 +11,24 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
   let { pageSize, count, list } = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
   copyCount += list.length;
 
-  const progress = create().step(`正在同步表 ${sourceTable}`);
+  const progress = new ProgressBar(`正在同步表 ${sourceTable}`, 100);
   progress.setTotal(count);
 
   await TableDAL.replaceTable(targetTable, list);
-  progress.addTick(copyCount);
+  progress.setValue(copyCount);
+  progress.render();
 
   while (pageIndex * pageSize < count) {
     pageIndex++;
     const res = await TableDAL.getTableData(sourceTable, primaryKey, pageIndex);
     copyCount += res.list.length;
     await TableDAL.replaceTable(targetTable, res.list);
-    progress.addTick(copyCount);
+    progress.setValue(copyCount);
+    progress.render();
     count = res.count;
     pageSize = res.pageSize;
   }
-
-  progress.finish();
+  // progress.finish();
 }
 
 async function syncTables() {
