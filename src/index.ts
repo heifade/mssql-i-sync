@@ -26,6 +26,7 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
     count = res.count;
     pageSize = res.pageSize;
   }
+  progress.finish();
 }
 
 async function syncTables() {
