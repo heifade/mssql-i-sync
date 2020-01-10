@@ -27,7 +27,7 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
     pageSize = res.pageSize;
   }
   progress.finish();
-  console.log("\n");
+  console.log("");
 }
 
 async function syncTables() {
@@ -35,9 +35,9 @@ async function syncTables() {
     const sourceTable = sourceDataBase.tables[i];
     const primaryKey = sourceDataBase.primaryKeys[i];
     const targetTable = targetDataBase.tables[i];
-    console.log(`${getTime()} 正在同步表${sourceTable}`);
+    // console.log(`${getTime()} 正在同步表${sourceTable}`);
     await syncTable(sourceTable, primaryKey, targetTable);
-    console.log(`${getTime()} 表${sourceTable} 同步完成`);
+    // console.log(`${getTime()} 表${sourceTable} 同步完成`);
   }
   console.log(`${getTime()} 同步完成`);
 }

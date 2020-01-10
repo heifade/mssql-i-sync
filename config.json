@@ -6,8 +6,8 @@
     "user": "mapRegion",
     "password": "yNsSgNxoXvI=",
     "database": "mapRegion",
-    "tables": ["boundary"],
-    "primaryKeys": ["id"],
+    "tables": ["boundary", "boundary"],
+    "primaryKeys": ["id", "id"],
     "connectionTimeout": 6000000
   },
   "targetDataBase": {
@@ -16,7 +16,7 @@
     "user": "mapRegion",
     "password": "yNsSgNxoXvI=",
     "database": "mapRegion2",
-    "tables": ["boundary"],
+    "tables": ["boundary", "boundary"],
     "connectionTimeout": 6000000
   }
 }
