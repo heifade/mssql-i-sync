@@ -27,6 +27,7 @@ async function syncTable(sourceTable: string, primaryKey: string, targetTable: s
     pageSize = res.pageSize;
   }
   progress.finish();
+  console.log("\n");
 }
 
 async function syncTables() {
