@@ -1,6 +1,6 @@
 {
   "name": "mssql-i-sync",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -23,7 +23,7 @@
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "mssql-i": "^2.0.57",
-    "progress-i": "^1.0.3",
+    "progress-i": "^1.0.8",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.0",
     "typescript": "^3.7.2",
