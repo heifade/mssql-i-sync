@@ -24,7 +24,6 @@ export class TableDAL {
       throw e;
     } finally {
       await ConnectionHelper.close(conn);
-      await ConnectionHelper.closePool();
     }
   }
 
@@ -44,7 +43,6 @@ export class TableDAL {
       throw e;
     } finally {
       await ConnectionHelper.close(conn);
-      await ConnectionHelper.closePool();
     }
   }
 }
