@@ -1,12 +1,12 @@
 {
-  "pageSize": 10,
+  "pageSize": 5,
   "sourceDataBase": {
     "server": "115.159.126.123",
     "port": 1433,
     "user": "mapRegion",
     "password": "yNsSgNxoXvI=",
     "database": "mapRegion",
-    "tables": ["boundary", "boundary"],
+    "tables": ["boundary", "relation"],
     "primaryKeys": ["id", "id"],
     "connectionTimeout": 6000000
   },
@@ -16,7 +16,7 @@
     "user": "mapRegion",
     "password": "yNsSgNxoXvI=",
     "database": "mapRegion2",
-    "tables": ["boundary", "boundary"],
+    "tables": ["boundary", "relation"],
     "connectionTimeout": 6000000
   }
 }
